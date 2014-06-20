@@ -1,0 +1,27 @@
+﻿using NUnit.Framework;
+using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Firefox;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using OpenQA.Selenium;
+
+namespace GitHubAutomation
+{
+    [TestFixture]
+    public class SmokeTests
+    {
+        private Steps.Steps steps = new Steps.Steps();
+        private const string USERNAME = "testautomationuser";
+        private const string PASSWORD = "password";
+
+        [Test]
+        public void OneCanLoginGithub()
+        {
+            steps.LoginGithub(USERNAME, PASSWORD);
+            Assert.True(steps.IsLoggedIn(USERNAME));
+        }
+    }
+}

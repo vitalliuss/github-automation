@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium;
+
+namespace GitHubAutomation.Pages
+{
+    public class MainPage : AbstractPage
+    {
+        private const string BASE_URL = "http://www.github.com/";
+
+        [FindsBy(How = How.XPath, Using = "//a[@aria-label='Create new...']")]
+        private IWebElement buttonCreateNew;
+
+        [FindsBy(How = How.XPath, Using = "//span[text()=' New repository']")]
+        private IWebElement linkNewRepository;
+
+        private IWebDriver driver;
+
+        public MainPage(IWebDriver driver)
+        {
+            this.driver = driver;
+            PageFactory.InitElements(this.driver, this);
+        }
+
+        public override void OpenPage()
+        {
+            driver.Navigate().GoToUrl(BASE_URL);
+        }
+
+        public void createNewRepostitory()
+        {
+            buttonCreateNew.Click();
+            linkNewRepository.Click();
+            Console.WriteLine("new repo created");
+        }
+
+    }
+}
