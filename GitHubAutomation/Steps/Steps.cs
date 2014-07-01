@@ -24,5 +24,25 @@ namespace GitHubAutomation.Steps
             Pages.LoginPage loginPage = new Pages.LoginPage(driver);
             return (loginPage.GetLoggedInUserName().Trim().ToLower().Equals(username));
         }
+
+        public bool CreateNewRepository(string repositoryName, string repositoryDescription)
+        {
+            bool success = false;
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.ClickOnCreateNewRepositoryButton();
+            Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
+            string expectedRepoName = createNewRepositoryPage.CreateNewRepository(repositoryName, repositoryDescription);
+            if (expectedRepoName.Equals(createNewRepositoryPage.GetCurrentRepositoryName()))
+            {
+                success = true;
+            }
+            return success;
+        }
+
+        public bool CurrentRepositoryIsEmpty()
+        {
+            Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
+            return createNewRepositoryPage.IsCurrentRepositoryEmpty();
+        }
     }
 }

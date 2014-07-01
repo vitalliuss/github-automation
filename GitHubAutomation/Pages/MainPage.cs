@@ -15,7 +15,7 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//a[@aria-label='Create new...']")]
         private IWebElement buttonCreateNew;
 
-        [FindsBy(How = How.XPath, Using = "//span[text()=' New repository']")]
+        [FindsBy(How = How.ClassName, Using = "octicon-repo")]
         private IWebElement linkNewRepository;
 
         private IWebDriver driver;
@@ -31,11 +31,10 @@ namespace GitHubAutomation.Pages
             driver.Navigate().GoToUrl(BASE_URL);
         }
 
-        public void createNewRepostitory()
+        public void ClickOnCreateNewRepositoryButton()
         {
             buttonCreateNew.Click();
             linkNewRepository.Click();
-            Console.WriteLine("new repo created");
         }
 
     }

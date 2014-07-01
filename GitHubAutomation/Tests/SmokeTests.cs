@@ -23,5 +23,13 @@ namespace GitHubAutomation
             steps.LoginGithub(USERNAME, PASSWORD);
             Assert.True(steps.IsLoggedIn(USERNAME));
         }
+
+        [Test]
+        public void OneCanCreateProject()
+        {
+            steps.LoginGithub(USERNAME, PASSWORD);
+            Assert.IsTrue(steps.CreateNewRepository("testRepo", "auto-generated test repo"));
+            Assert.IsTrue(steps.CurrentRepositoryIsEmpty());
+        }
     }
 }
