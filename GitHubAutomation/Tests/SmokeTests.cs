@@ -17,6 +17,18 @@ namespace GitHubAutomation
         private const string USERNAME = "testautomationuser";
         private const string PASSWORD = "password";
 
+        [SetUp]
+        public void Init()
+        {
+            steps.InitBrowser();
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            steps.CloseBrowser();
+        }
+
         [Test]
         public void OneCanLoginGithub()
         {

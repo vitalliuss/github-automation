@@ -10,7 +10,17 @@ namespace GitHubAutomation.Steps
 {
     public class Steps
     {
-        IWebDriver driver = Driver.DriverInstance.GetInstance();
+        IWebDriver driver;
+
+        public void InitBrowser()
+        {
+            driver = Driver.DriverInstance.GetInstance();
+        }
+
+        public void CloseBrowser()
+        {
+            Driver.DriverInstance.CloseBrowser();
+        }
 
         public void LoginGithub(string username, string password)
         {

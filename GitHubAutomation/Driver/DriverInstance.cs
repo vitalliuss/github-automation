@@ -28,6 +28,12 @@ namespace GitHubAutomation.Driver
             return driver;
         }
 
+        public static void CloseBrowser()
+        {
+            driver.Close();
+            driver = null;
+        }
+
         private static IWebDriver CreateDriver()
         {
             IWebDriver driver;
