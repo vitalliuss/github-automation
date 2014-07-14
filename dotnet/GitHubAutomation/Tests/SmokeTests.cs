@@ -15,7 +15,7 @@ namespace GitHubAutomation
     {
         private Steps.Steps steps = new Steps.Steps();
         private const string USERNAME = "testautomationuser";
-        private const string PASSWORD = "password";
+        private const string PASSWORD = "Time4Death!";
 
         [SetUp]
         public void Init()
