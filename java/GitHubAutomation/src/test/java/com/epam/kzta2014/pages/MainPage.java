@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage extends AbstractPage
 {
 	private final String BASE_URL = "https://github.com/";
-	private final WebDriver driver;
 
 	@FindBy(xpath = "//a[@aria-label='Create new...']")
 	private WebElement buttonCreateNew;
@@ -18,7 +17,7 @@ public class MainPage extends AbstractPage
 
 	public MainPage(WebDriver driver)
 	{
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(this.driver, this);
 	}
 

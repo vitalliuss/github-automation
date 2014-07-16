@@ -10,7 +10,6 @@ import com.epam.kzta2014.utils.Utils;
 public class CreateNewRepositoryPage extends AbstractPage
 {
 	private final String BASE_URL = "http://www.github.com/new";
-	private final WebDriver driver;
 
 	@FindBy(id = "repository_name")
 	private WebElement inputRepositoryName;
@@ -29,7 +28,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 
 	public CreateNewRepositoryPage(WebDriver driver)
 	{
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(this.driver, this);
 	}
 
