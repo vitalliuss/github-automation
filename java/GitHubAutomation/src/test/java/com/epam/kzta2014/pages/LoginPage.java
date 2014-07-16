@@ -21,11 +21,9 @@ public class LoginPage extends AbstractPage
 	@FindBy(xpath = "//ul[@id='user-links']//a")
 	private WebElement linkLoggedInUser;
 
-	private final WebDriver driver;
-
 	public LoginPage(WebDriver driver)
 	{
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(this.driver, this);
 	}
 

@@ -29,7 +29,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 
 	public CreateNewRepositoryPage(WebDriver driver)
 	{
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(this.driver, this);
 	}
 
