@@ -2,6 +2,7 @@ package com.epam.kzta2014.steps;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -13,11 +14,14 @@ public class Steps
 {
 	private WebDriver driver;
 
+	private final Logger logger = Logger.getLogger(Steps.class);
+
 	public void initBrowser()
 	{
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		logger.info("Browser started");
 	}
 
 	public void closeDriver()
@@ -30,7 +34,6 @@ public class Steps
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.openPage();
 		loginPage.login(username, password);
-
 	}
 
 	public boolean isLoggedIn(String username)
@@ -41,16 +44,11 @@ public class Steps
 
 	public boolean createNewRepository(String repositoryName, String repositoryDescription)
 	{
-		boolean success = false;
 		MainPage mainPage = new MainPage(driver);
 		mainPage.clickOnCreateNewRepositoryButton();
 		CreateNewRepositoryPage createNewRepositoryPage = new CreateNewRepositoryPage(driver);
 		String expectedRepoName = createNewRepositoryPage.createNewRepository(repositoryName, repositoryDescription);
-		if (expectedRepoName.equals(createNewRepositoryPage.getCurrentRepositoryName()))
-		{
-			success = true;
-		}
-		return success;
+		return expectedRepoName.equals(createNewRepositoryPage.getCurrentRepositoryName());
 	}
 
 	public boolean currentRepositoryIsEmpty()
