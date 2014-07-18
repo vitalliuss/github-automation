@@ -31,6 +31,5 @@ public class MainPage extends AbstractPage
 	public void openPage()
 	{
 		driver.navigate().to(BASE_URL);
-		System.out.println("Main Page opened");
 	}
 }

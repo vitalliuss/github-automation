@@ -1,5 +1,6 @@
 package com.epam.kzta2014.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import com.epam.kzta2014.utils.Utils;
 public class CreateNewRepositoryPage extends AbstractPage
 {
 	private final String BASE_URL = "http://www.github.com/new";
+	private final Logger logger = Logger.getLogger(CreateNewRepositoryPage.class);
 
 	@FindBy(id = "repository_name")
 	private WebElement inputRepositoryName;
@@ -55,7 +57,6 @@ public class CreateNewRepositoryPage extends AbstractPage
 	public void openPage()
 	{
 		driver.navigate().to(BASE_URL);
-		System.out.println("CreateNewRepository Page opened");
 	}
 
 }
