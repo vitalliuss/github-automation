@@ -1,8 +1,11 @@
-﻿using log4net;
+﻿using EPAM.ReportPortal.Client.Models;
+using EPAM.ReportPortal.Client.Requests;
+using log4net;
 using log4net.Config;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +27,40 @@ namespace GitHubAutomation.Tests
             logger.Warn("... and a warning.");
             logger.Error("... and an error.");
             logger.Fatal("... and a fatal error.");
+        }
+
+        [Test]
+        public void OneCanUploadFileToReportPortal()
+        {
+            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
+            var log = new AddLogItemRequest
+            {
+                Time = DateTime.UtcNow,
+                Attach = attach,
+                Level = LogLevel.Info,
+                TestItemId = EPAM.ReportPortal.Shared.Bridge.Context.TestId,
+                Text = "http://epam.com"
+            };
+
+            EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
+            //Assert.True(false);
+        }
+
+        [Test]
+        public void OneCanUploadAnotherFileToReportPortal()
+        {
+            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
+            var log = new AddLogItemRequest
+            {
+                Time = DateTime.UtcNow,
+                Attach = attach,
+                Level = LogLevel.Info,
+                TestItemId = EPAM.ReportPortal.Shared.Bridge.Context.TestId,
+                Text = "http://epam.com"
+            };
+
+            EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
+            Assert.True(false);
         }
     }
 }
