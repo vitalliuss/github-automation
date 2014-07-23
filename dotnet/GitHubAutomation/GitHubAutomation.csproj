@@ -30,29 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPAM.ReportPortal.Addins.NUnit">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\EPAM.ReportPortal.Addins.NUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="EPAM.ReportPortal.Client">
-      <HintPath>..\packages\ReportPortal.Client.1.0.67\lib\EPAM.ReportPortal.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="EPAM.ReportPortal.Shared">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\EPAM.ReportPortal.Shared.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -77,7 +59,6 @@
     <Compile Include="Pages\CreateNewRepositoryPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="ReportPortalIntegration\CustomAddin.cs" />
     <Compile Include="Steps\Steps.cs" />
     <Compile Include="Tests\LogTest.cs" />
     <Compile Include="Tests\SmokeTests.cs" />
@@ -89,11 +70,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="EPAM.ReportPortal.Addins.NUnit.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="EPAM.ReportPortal.Addins.SpecFlowPlugin.dll.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\Selenium.WebDriver.ChromeDriver.2.10.0.0\content\chromedriver.exe">

@@ -1,6 +1,4 @@
-﻿using EPAM.ReportPortal.Client.Models;
-using EPAM.ReportPortal.Client.Requests;
-using log4net;
+﻿using log4net;
 using log4net.Config;
 using NUnit.Framework;
 using System;
@@ -15,11 +13,14 @@ namespace GitHubAutomation.Tests
     public class LogTest
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(LogTest));
+        private Steps.Steps steps = new Steps.Steps();
+        private const string USERNAME = "testautomationuser";
+        private const string PASSWORD = "password";
 
         [Test]
         public void OneCanUseLog4Net()
         {
-            // ]BasicConfigurator.Configure();
+            // BasicConfigurator.Configure();
             DOMConfigurator.Configure();
 
             logger.Debug("Here is a debug log.");
@@ -30,37 +31,12 @@ namespace GitHubAutomation.Tests
         }
 
         [Test]
-        public void OneCanUploadFileToReportPortal()
+        public void OneCanTakeAScreenshot()
         {
-            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
-            var log = new AddLogItemRequest
-            {
-                Time = DateTime.UtcNow,
-                Attach = attach,
-                Level = LogLevel.Info,
-                TestItemId = EPAM.ReportPortal.Shared.Bridge.Context.TestId,
-                Text = "http://epam.com"
-            };
-
-            EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
-            //Assert.True(false);
-        }
-
-        [Test]
-        public void OneCanUploadAnotherFileToReportPortal()
-        {
-            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
-            var log = new AddLogItemRequest
-            {
-                Time = DateTime.UtcNow,
-                Attach = attach,
-                Level = LogLevel.Info,
-                TestItemId = EPAM.ReportPortal.Shared.Bridge.Context.TestId,
-                Text = "http://epam.com"
-            };
-
-            EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
-            Assert.True(false);
+            steps.InitBrowser();
+            steps.LoginGithub(USERNAME, PASSWORD);
+            //steps.TakeScreenshot();
+            steps.CloseBrowser();
         }
     }
 }
