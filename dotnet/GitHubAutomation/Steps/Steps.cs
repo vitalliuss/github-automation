@@ -5,14 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GitHubAutomation.Configuration;
-using log4net;
 
 namespace GitHubAutomation.Steps
 {
     public class Steps
     {
         IWebDriver driver;
-        private static readonly ILog logger = LogManager.GetLogger(typeof(Steps));
 
         public void InitBrowser()
         {
@@ -26,7 +24,6 @@ namespace GitHubAutomation.Steps
 
         public void LoginGithub(string username, string password)
         {
-            logger.Info("Log in to github");
             Pages.LoginPage loginPage = new Pages.LoginPage(driver);
             loginPage.OpenPage();
             loginPage.Login(username, password);
@@ -40,7 +37,6 @@ namespace GitHubAutomation.Steps
 
         public bool CreateNewRepository(string repositoryName, string repositoryDescription)
         {
-            logger.Info("Creating new repo with name: " + repositoryName);
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.ClickOnCreateNewRepositoryButton();
             Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
