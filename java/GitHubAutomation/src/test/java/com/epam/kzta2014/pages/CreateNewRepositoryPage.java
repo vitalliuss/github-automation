@@ -22,8 +22,8 @@ public class CreateNewRepositoryPage extends AbstractPage
 	@FindBy(xpath = "//form[@id='new_repository']//button[@type='submit']")
 	private WebElement butttonCreate;
 
-	@FindBy(className = "empty-repo-recommendations")
-	private WebElement labelEmptyRepoRecommendations;
+	@FindBy(className = "empty-repo-setup-option")
+	private WebElement labelEmptyRepoSetupOption;
 
 	@FindBy(className = "js-current-repository")
 	private WebElement linkCurrentRepository;
@@ -36,7 +36,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 
 	public boolean isCurrentRepositoryEmpty()
 	{
-		return labelEmptyRepoRecommendations.isDisplayed();
+		return labelEmptyRepoSetupOption.isDisplayed();
 	}
 
 	public String createNewRepository(String repositoryName, String repositoryDescription)

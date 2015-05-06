@@ -7,14 +7,12 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.epam.kzta2014.steps.Steps;
-import com.epam.ta.reportportal.listeners.testng.ReportPortalTestNGListener;
 
-@Listeners({ ReportPortalTestNGListener.class })
 public class GitHubAutomationTest
 {
 	private Steps steps;
 	private final String USERNAME = "testautomationuser";
-	private final String PASSWORD = "password";
+	private final String PASSWORD = "Time4Death!";
 
 	@BeforeMethod(description = "Init browser")
 	public void setUp()
