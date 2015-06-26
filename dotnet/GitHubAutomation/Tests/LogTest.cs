@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace GitHubAutomation.Tests
 {
+    [TestFixture]
     public class LogTest
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(LogTest));
@@ -60,7 +61,7 @@ namespace GitHubAutomation.Tests
                 Text = "http://epam.com"
             };
 
-            
+
             EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
             Assert.True(false);
         }

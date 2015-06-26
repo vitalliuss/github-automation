@@ -92,6 +92,7 @@
     </None>
     <None Include="EPAM.ReportPortal.Addins.NUnit.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="EPAM.ReportPortal.Addins.SpecFlowPlugin.dll.config" />
     <None Include="packages.config" />
