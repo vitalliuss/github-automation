@@ -31,28 +31,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPAM.ReportPortal.Addins.NUnit">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\EPAM.ReportPortal.Addins.NUnit.dll</HintPath>
+      <HintPath>..\packages\ReportPortal.NUnit.1.0.57\lib\EPAM.ReportPortal.Addins.NUnit.dll</HintPath>
     </Reference>
     <Reference Include="EPAM.ReportPortal.Client">
-      <HintPath>..\packages\ReportPortal.Client.1.0.67\lib\EPAM.ReportPortal.Client.dll</HintPath>
+      <HintPath>..\packages\ReportPortal.Client.1.0.75\lib\EPAM.ReportPortal.Client.dll</HintPath>
     </Reference>
     <Reference Include="EPAM.ReportPortal.Shared">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\EPAM.ReportPortal.Shared.dll</HintPath>
+      <HintPath>..\packages\ReportPortal.NUnit.1.0.57\lib\EPAM.ReportPortal.Shared.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core.interfaces">
-      <HintPath>..\packages\ReportPortal.NUnit.1.0.36\lib\nunit.core.interfaces.dll</HintPath>
+      <HintPath>..\packages\ReportPortal.NUnit.1.0.57\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -64,10 +65,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.42.0\lib\net40\WebDriver.dll</HintPath>
+      <HintPath>..\packages\Selenium.WebDriver.2.46.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.42.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <HintPath>..\packages\Selenium.Support.2.46.0\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
