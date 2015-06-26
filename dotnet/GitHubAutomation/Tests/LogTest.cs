@@ -15,12 +15,13 @@ namespace GitHubAutomation.Tests
     public class LogTest
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(LogTest));
+        public static readonly string PATH_TO_SCREENSHOT = "D:\\demoScreenshot.png";
 
         [Test]
         public void OneCanUseLog4Net()
         {
-            // ]BasicConfigurator.Configure();
-            DOMConfigurator.Configure();
+            BasicConfigurator.Configure();
+            //DOMConfigurator.Configure();
 
             logger.Debug("Here is a debug log.");
             logger.Info("... and an Info log.");
@@ -32,7 +33,7 @@ namespace GitHubAutomation.Tests
         [Test]
         public void OneCanUploadFileToReportPortal()
         {
-            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
+            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes(PATH_TO_SCREENSHOT));
             var log = new AddLogItemRequest
             {
                 Time = DateTime.UtcNow,
@@ -49,7 +50,7 @@ namespace GitHubAutomation.Tests
         [Test]
         public void OneCanUploadAnotherFileToReportPortal()
         {
-            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes("D:\\demoScreenshoot.png"));
+            var attach = new Attach("screenshot", "image/jpeg", File.ReadAllBytes(PATH_TO_SCREENSHOT));
             var log = new AddLogItemRequest
             {
                 Time = DateTime.UtcNow,
@@ -59,6 +60,7 @@ namespace GitHubAutomation.Tests
                 Text = "http://epam.com"
             };
 
+            
             EPAM.ReportPortal.Shared.Bridge.Service.AddLogItem(log);
             Assert.True(false);
         }
