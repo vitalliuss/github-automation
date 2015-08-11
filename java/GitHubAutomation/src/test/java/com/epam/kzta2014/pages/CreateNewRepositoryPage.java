@@ -25,7 +25,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 	@FindBy(className = "empty-repo-setup-option")
 	private WebElement labelEmptyRepoSetupOption;
 
-	@FindBy(className = "js-current-repository")
+	@FindBy(xpath = "//a[@data-pjax='#js-repo-pjax-container']")
 	private WebElement linkCurrentRepository;
 
 	public CreateNewRepositoryPage(WebDriver driver)

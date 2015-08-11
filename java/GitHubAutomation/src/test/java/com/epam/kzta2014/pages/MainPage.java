@@ -1,5 +1,7 @@
 package com.epam.kzta2014.pages;
 
+import com.epam.kzta2014.pages.AbstractPage;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +11,10 @@ public class MainPage extends AbstractPage
 {
 	private final String BASE_URL = "https://github.com/";
 
-	@FindBy(xpath = "//a[@aria-label='Create new...']")
+	@FindBy(xpath = "//a[contains(@aria-label, 'Create new')]")
 	private WebElement buttonCreateNew;
 
-	@FindBy(className = "octicon-repo")
+	@FindBy(xpath = "//a[contains(text(), 'New repository')]")
 	private WebElement linkNewRepository;
 
 	public MainPage(WebDriver driver)
