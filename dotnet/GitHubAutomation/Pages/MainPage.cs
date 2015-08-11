@@ -8,14 +8,14 @@ using OpenQA.Selenium;
 
 namespace GitHubAutomation.Pages
 {
-    public class MainPage : AbstractPage
+    public class MainPage
     {
         private const string BASE_URL = "http://www.github.com/";
 
-        [FindsBy(How = How.XPath, Using = "//a[@aria-label='Create new...']")]
+        [FindsBy(How = How.XPath, Using = "//a[@aria-label='Create new…']/span")]
         private IWebElement buttonCreateNew;
 
-        [FindsBy(How = How.ClassName, Using = "octicon-repo")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(), 'New repository')]")]
         private IWebElement linkNewRepository;
 
         private IWebDriver driver;
@@ -26,7 +26,7 @@ namespace GitHubAutomation.Pages
             PageFactory.InitElements(this.driver, this);
         }
 
-        public override void OpenPage()
+        public void OpenPage()
         {
             driver.Navigate().GoToUrl(BASE_URL);
         }

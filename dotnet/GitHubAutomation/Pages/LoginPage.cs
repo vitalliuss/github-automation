@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GitHubAutomation.Pages
 {
-    public class LoginPage : AbstractPage
+    public class LoginPage
     {
         private const string BASE_URL = "https://github.com/login";
 
@@ -21,7 +21,7 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//input[@value='Sign in']")]
         private IWebElement buttonSubmit;
         
-        [FindsBy(How = How.XPath, Using = "//ul[@id='user-links']//a")]
+        [FindsBy(How = How.XPath, Using = "//span[@aria-label='Switch account context']/span")]
         private IWebElement linkLoggedInUser;
 
         private IWebDriver driver;
@@ -32,7 +32,7 @@ namespace GitHubAutomation.Pages
             PageFactory.InitElements(this.driver, this);
         }
 
-        public override void OpenPage()
+        public void OpenPage()
         {
             driver.Navigate().GoToUrl(BASE_URL);
             Console.WriteLine("Login Page opened");

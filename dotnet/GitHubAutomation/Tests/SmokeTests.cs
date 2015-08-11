@@ -26,7 +26,7 @@ namespace GitHubAutomation
         [TearDown]
         public void Cleanup()
         {
-            steps.CloseBrowser();
+            //steps.CloseBrowser();
         }
 
         [Test]

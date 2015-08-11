@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GitHubAutomation.Pages
 {
-    public class CreateNewRepositoryPage : AbstractPage
+    public class CreateNewRepositoryPage
     {
         private const string BASE_URL = "http://www.github.com/new";
         private IWebDriver driver;
@@ -22,10 +22,10 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//form[@id='new_repository']//button[@type='submit']")]
         private IWebElement butttonCreate;
 
-        [FindsBy(How = How.ClassName, Using = "empty-repo-recommendations")]
+        [FindsBy(How = How.ClassName, Using = "empty-repo-setup-option")]
         private IWebElement labelEmptyRepoRecommendations;
 
-        [FindsBy(How = How.ClassName, Using = "js-current-repository")]
+        [FindsBy(How = How.XPath, Using = "//a[@data-pjax='#js-repo-pjax-container']")]
         private IWebElement linkCurrentRepository;
 
 
@@ -35,7 +35,7 @@ namespace GitHubAutomation.Pages
             PageFactory.InitElements(this.driver, this);
         }
 
-        public override void OpenPage()
+        public void OpenPage()
         {
             driver.Navigate().GoToUrl(BASE_URL);
         }
