@@ -34,7 +34,7 @@ public class LogTest {
         Assert.fail();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void oneCanTakeScreenshotWithWebDriver(){
         WebDriver driver = new FirefoxDriver();
         driver.get("http://www.reddit.com/");
