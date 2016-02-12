@@ -17,7 +17,7 @@ namespace GitHubAutomation.Tests
         public void OneCanUseLog4Net()
         {
             // BasicConfigurator.Configure();
-            DOMConfigurator.Configure();
+            XmlConfigurator.Configure();
 
             logger.Debug("Here is a debug log.");
             logger.Info("... and an Info log.");
