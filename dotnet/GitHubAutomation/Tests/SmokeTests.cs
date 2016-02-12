@@ -30,6 +30,7 @@ namespace GitHubAutomation
         }
 
         [Test]
+        [Ignore("Not ready yet")]
         public void OneCanLoginGithub()
         {
             steps.LoginGithub(USERNAME, PASSWORD);
@@ -37,6 +38,7 @@ namespace GitHubAutomation
         }
 
         [Test]
+        [Ignore("Not ready yet")]
         public void OneCanCreateProject()
         {
             steps.LoginGithub(USERNAME, PASSWORD);
