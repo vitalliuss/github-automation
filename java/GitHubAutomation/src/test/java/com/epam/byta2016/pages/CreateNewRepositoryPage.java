@@ -1,11 +1,11 @@
-package com.epam.kzta2014.pages;
+package com.epam.byta2016.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.epam.kzta2014.utils.Utils;
+import com.epam.byta2016.utils.Utils;
 
 public class CreateNewRepositoryPage extends AbstractPage
 {

@@ -1,13 +1,13 @@
-package com.epam.kzta2014.steps;
+package com.epam.byta2016.steps;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.epam.kzta2014.pages.CreateNewRepositoryPage;
-import com.epam.kzta2014.pages.LoginPage;
-import com.epam.kzta2014.pages.MainPage;
+import com.epam.byta2016.pages.CreateNewRepositoryPage;
+import com.epam.byta2016.pages.LoginPage;
+import com.epam.byta2016.pages.MainPage;
 
 public class Steps
 {

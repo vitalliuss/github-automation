@@ -1,4 +1,4 @@
-package com.epam.kzta2014.utils;
+package com.epam.byta2016.utils;
 
 import java.util.Random;
 

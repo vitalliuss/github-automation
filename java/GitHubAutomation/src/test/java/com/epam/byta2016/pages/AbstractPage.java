@@ -1,4 +1,4 @@
-package com.epam.kzta2014.pages;
+package com.epam.byta2016.pages;
 
 import org.openqa.selenium.WebDriver;
 
