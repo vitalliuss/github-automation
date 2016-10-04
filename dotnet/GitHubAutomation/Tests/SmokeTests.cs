@@ -28,7 +28,7 @@ namespace GitHubAutomation
             Assert.True(steps.IsLoggedIn(USERNAME));
         }
 
-        //[Test]
+        [Test]
         public void OneCanCreateProject()
         {
             steps.LoginGithub(USERNAME, PASSWORD);
