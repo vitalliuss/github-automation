@@ -30,18 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core">
-      <HintPath>libs\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>libs\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>libs\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Selenium.WebDriverBackedSelenium">
-      <HintPath>libs\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -52,14 +43,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ThoughtWorks.Selenium.Core">
-      <HintPath>libs\ThoughtWorks.Selenium.Core.dll</HintPath>
+    <Reference Include="WebDriver, Version=3.0.0-beta3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.0.0-beta3\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver">
-      <HintPath>libs\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>libs\WebDriver.Support.dll</HintPath>
+    <Reference Include="WebDriver.Support, Version=3.0.0-beta3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.0.0-beta3\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,29 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessObjects\" />
+    <Folder Include="DriverBinaries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup Label="DownloadIEDriverBuildTask">
-    <CoreBuildDependsOn>DownloadIEDriver;$(CoreBuildDependsOn)</CoreBuildDependsOn>
-    <IEDriverInstallPath>$(SolutionDir)packages\Selenium.WebDriver.IEDriver.2.42.0.0\</IEDriverInstallPath>
-    <IEDriverToolsPath>$(IEDriverInstallPath)tools\</IEDriverToolsPath>
-    <IEDriverInitScriptPath>$(IEDriverToolsPath)Init.ps1</IEDriverInitScriptPath>
-    <IEDriverPath>$(IEDriverInstallPath)content\IEDriverServer.exe</IEDriverPath>
-    <PowerShellExe Condition="'$(PowerShellExe)'==''">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
-  </PropertyGroup>
-  <Target Name="DownloadIEDriver" Label="DownloadIEDriverBuildTask">
-    <Exec Condition="!Exists('$(IEDriverPath)')" Command="$(PowerShellExe) -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { &amp;'$(IEDriverInitScriptPath)' '$(IEDriverInstallPath)' '$(IEDriverToolsPath)'} &quot;" />
-  </Target>
-  <PropertyGroup Label="DownloadChromeDriverBuildTask">
-    <CoreBuildDependsOn>DownloadChromeDriver;$(CoreBuildDependsOn)</CoreBuildDependsOn>
-    <ChromeDriverInstallPath>$(SolutionDir)packages\Selenium.WebDriver.ChromeDriver.2.10.0.0\</ChromeDriverInstallPath>
-    <ChromeDriverToolsPath>$(ChromeDriverInstallPath)tools\</ChromeDriverToolsPath>
-    <ChromeDriverInitScriptPath>$(ChromeDriverToolsPath)Init.ps1</ChromeDriverInitScriptPath>
-    <ChromeDriverPath>$(ChromeDriverInstallPath)content\chromedriver.exe</ChromeDriverPath>
-    <PowerShellExe Condition="'$(PowerShellExe)'==''">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
-  </PropertyGroup>
-  <Target Name="DownloadChromeDriver" Label="DownloadChromeDriverBuildTask">
-    <Exec Condition="!Exists('$(ChromeDriverPath)')" Command="$(PowerShellExe) -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { &amp;'$(ChromeDriverInitScriptPath)' '$(ChromeDriverInstallPath)' '$(ChromeDriverToolsPath)'} &quot;" />
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(ProjectDir)DriverBinaries\geckodriver.exe" DestinationFolder="$(TargetDir)" ContinueOnError="true" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

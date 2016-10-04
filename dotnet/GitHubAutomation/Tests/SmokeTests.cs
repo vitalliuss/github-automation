@@ -1,12 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Support;
-using OpenQA.Selenium.Firefox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 
 namespace GitHubAutomation
 {
@@ -36,7 +28,7 @@ namespace GitHubAutomation
             Assert.True(steps.IsLoggedIn(USERNAME));
         }
 
-        [Test]
+        //[Test]
         public void OneCanCreateProject()
         {
             steps.LoginGithub(USERNAME, PASSWORD);

@@ -1,10 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitHubAutomation.Pages
 {
@@ -21,7 +17,7 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//input[@value='Sign in']")]
         private IWebElement buttonSubmit;
         
-        [FindsBy(How = How.XPath, Using = "//span[@aria-label='Switch account context']/span")]
+        [FindsBy(How = How.XPath, Using = "//button[@aria-label='Switch account context']//span")]
         private IWebElement linkLoggedInUser;
 
         private IWebDriver driver;

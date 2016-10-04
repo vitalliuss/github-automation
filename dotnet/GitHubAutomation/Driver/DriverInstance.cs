@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using OpenQA.Selenium.Firefox;
+using System.Diagnostics;
 
 namespace GitHubAutomation.Driver
 {
@@ -23,8 +24,13 @@ namespace GitHubAutomation.Driver
 
         public static void CloseBrowser()
         {
-            driver.Close();
+            driver.Quit();
             driver = null;
+
+            foreach (var process in Process.GetProcessesByName("geckodriver"))
+            {
+                process.Kill();
+            }
         }
     }
 }
