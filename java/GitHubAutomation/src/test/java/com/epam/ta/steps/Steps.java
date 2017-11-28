@@ -38,7 +38,9 @@ public class Steps
 	public boolean isLoggedIn(String username)
 	{
 		LoginPage loginPage = new LoginPage(driver);
-		return (loginPage.getLoggedInUserName().trim().toLowerCase().equals(username));
+		String actualUsername = loginPage.getLoggedInUserName().trim().toLowerCase();
+		logger.info("Actual username: " + actualUsername);
+		return actualUsername.equals(username);
 	}
 
 	public boolean createNewRepository(String repositoryName, String repositoryDescription)

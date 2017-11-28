@@ -21,7 +21,7 @@ public class LoginPage extends AbstractPage
 	@FindBy(xpath = "//input[@value='Sign in']")
 	private WebElement buttonSubmit;
 
-	@FindBy(xpath = "//ul[@id='user-links']//a")
+	@FindBy(xpath = "//meta[@name='user-login']")
 	private WebElement linkLoggedInUser;
 
 	public LoginPage(WebDriver driver)
@@ -47,7 +47,7 @@ public class LoginPage extends AbstractPage
 
 	public String getLoggedInUserName()
 	{
-		return linkLoggedInUser.getText();
+		return linkLoggedInUser.getAttribute("content");
 	}
 
 }
