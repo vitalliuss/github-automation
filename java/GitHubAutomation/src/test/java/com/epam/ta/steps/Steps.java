@@ -25,7 +25,7 @@ public class Steps
 
 	public void closeDriver()
 	{
-		driver.quit();
+		DriverSingleton.closeDriver();
 	}
 
 	public void loginGithub(String username, String password)
