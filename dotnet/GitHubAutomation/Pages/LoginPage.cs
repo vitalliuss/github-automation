@@ -17,7 +17,7 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//input[@value='Sign in']")]
         private IWebElement buttonSubmit;
         
-        [FindsBy(How = How.XPath, Using = "//button[@aria-label='Switch account context']//span")]
+        [FindsBy(How = How.XPath, Using = "//meta[@name='user-login']")]
         private IWebElement linkLoggedInUser;
 
         private IWebDriver driver;
@@ -43,7 +43,7 @@ namespace GitHubAutomation.Pages
 
         public string GetLoggedInUserName()
         {
-            return linkLoggedInUser.Text;
+            return linkLoggedInUser.GetAttribute("content");
         }
     }
 }

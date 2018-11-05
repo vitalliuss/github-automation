@@ -16,7 +16,7 @@ namespace GitHubAutomation.Driver
             if (driver == null)
             {
                 driver = new FirefoxDriver();
-                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
+                driver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(30));
                 driver.Manage().Window.Maximize();
             }
             return driver;
@@ -26,11 +26,6 @@ namespace GitHubAutomation.Driver
         {
             driver.Quit();
             driver = null;
-
-            foreach (var process in Process.GetProcessesByName("geckodriver"))
-            {
-                process.Kill();
-            }
         }
     }
 }

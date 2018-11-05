@@ -17,7 +17,7 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.XPath, Using = "//form[@id='new_repository']//button[@type='submit']")]
         private IWebElement butttonCreate;
 
-        [FindsBy(How = How.ClassName, Using = "empty-repo-setup-option")]
+        [FindsBy(How = How.ClassName, Using = "//h3/strong[text()='Quick setup']")]
         private IWebElement labelEmptyRepoRecommendations;
 
         [FindsBy(How = How.XPath, Using = "//a[@data-pjax='#js-repo-pjax-container']")]
@@ -35,13 +35,11 @@ namespace GitHubAutomation.Pages
             driver.Navigate().GoToUrl(BASE_URL);
         }
 
-        public string CreateNewRepository(string repositoryName, string repositoryDescription)
+        public void CreateNewRepository(string repositoryName, string repositoryDescription)
         {
-            string repositoryFullName = repositoryName + Utils.RandomGenerator.GetRandomString(6);
-            inputRepositoryName.SendKeys(repositoryFullName);
+            inputRepositoryName.SendKeys(repositoryName);
             inputRepositoryDescription.SendKeys(repositoryDescription);
             butttonCreate.Click();
-            return repositoryFullName;
         }
 
         public bool IsCurrentRepositoryEmpty()

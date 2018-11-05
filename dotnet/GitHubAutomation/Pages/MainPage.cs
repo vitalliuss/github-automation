@@ -12,7 +12,7 @@ namespace GitHubAutomation.Pages
     {
         private const string BASE_URL = "http://www.github.com/";
 
-        [FindsBy(How = How.XPath, Using = "//a[@aria-label='Create new…']/span")]
+        [FindsBy(How = How.XPath, Using = "//summary[@aria-label='Create new…']")]
         private IWebElement buttonCreateNew;
 
         [FindsBy(How = How.XPath, Using = "//a[contains(text(), 'New repository')]")]

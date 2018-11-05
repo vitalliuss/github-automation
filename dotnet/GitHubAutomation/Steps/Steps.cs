@@ -23,26 +23,36 @@ namespace GitHubAutomation.Steps
             loginPage.Login(username, password);
         }
 
-        public bool IsLoggedIn(string username)
+        public string GetLoggedInUserName()
         {
             Pages.LoginPage loginPage = new Pages.LoginPage(driver);
-            return (loginPage.GetLoggedInUserName().Trim().ToLower().Equals(username));
+            return loginPage.GetLoggedInUserName();
         }
 
-        public bool CreateNewRepository(string repositoryName, string repositoryDescription)
+        public void CreateNewRepository(string repositoryName, string repositoryDescription)
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.ClickOnCreateNewRepositoryButton();
             Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
-            string expectedRepoName = createNewRepositoryPage.CreateNewRepository(repositoryName, repositoryDescription);
+            createNewRepositoryPage.CreateNewRepository(repositoryName, repositoryDescription);
+        }
 
-            return expectedRepoName.Equals(createNewRepositoryPage.GetCurrentRepositoryName());
+        public string GenerateRandomRepositoryNameWithCharLength(int howManyChars)
+        {
+            string repositoryNamePrefix = "testRepo_";
+            return string.Concat(repositoryNamePrefix, Utils.RandomGenerator.GetRandomString(howManyChars));
         }
 
         public bool CurrentRepositoryIsEmpty()
         {
             Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
             return createNewRepositoryPage.IsCurrentRepositoryEmpty();
+        }
+
+        public string GetCurrentRepositoryName()
+        {
+            Pages.CreateNewRepositoryPage createNewRepositoryPage = new Pages.CreateNewRepositoryPage(driver);
+            return createNewRepositoryPage.GetCurrentRepositoryName();
         }
     }
 }
