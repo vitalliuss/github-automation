@@ -1,12 +1,10 @@
 package com.epam.ta.steps;
 
-import java.util.concurrent.TimeUnit;
-
 import com.epam.ta.driver.DriverSingleton;
+import com.epam.ta.utils.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.epam.ta.pages.CreateNewRepositoryPage;
 import com.epam.ta.pages.LoginPage;
@@ -18,12 +16,12 @@ public class Steps
 
 	private final Logger logger = LogManager.getRootLogger();
 
-	public void initBrowser()
+	public void openBrowser()
 	{
 		driver = DriverSingleton.getDriver();
 	}
 
-	public void closeDriver()
+	public void closeBrowser()
 	{
 		DriverSingleton.closeDriver();
 	}
@@ -43,19 +41,28 @@ public class Steps
 		return actualUsername.equals(username);
 	}
 
-	public boolean createNewRepository(String repositoryName, String repositoryDescription)
+	public void createNewRepository(String repositoryName, String repositoryDescription)
 	{
 		MainPage mainPage = new MainPage(driver);
 		mainPage.clickOnCreateNewRepositoryButton();
 		CreateNewRepositoryPage createNewRepositoryPage = new CreateNewRepositoryPage(driver);
-		String expectedRepoName = createNewRepositoryPage.createNewRepository(repositoryName, repositoryDescription);
-		return expectedRepoName.equals(createNewRepositoryPage.getCurrentRepositoryName());
+		createNewRepositoryPage.createNewRepository(repositoryName, repositoryDescription);
 	}
 
 	public boolean currentRepositoryIsEmpty()
 	{
 		CreateNewRepositoryPage createNewRepositoryPage = new CreateNewRepositoryPage(driver);
 		return createNewRepositoryPage.isCurrentRepositoryEmpty();
+	}
+
+	public String getCurrentRepositoryName(){
+		CreateNewRepositoryPage createNewRepositoryPage = new CreateNewRepositoryPage(driver);
+		return createNewRepositoryPage.getCurrentRepositoryName();
+	}
+
+	public String generateRandomRepositoryNameWithCharLength(int howManyChars){
+		String repositoryNamePrefix = "testRepo_";
+		return repositoryNamePrefix.concat(Utils.getRandomString(howManyChars));
 	}
 
 }

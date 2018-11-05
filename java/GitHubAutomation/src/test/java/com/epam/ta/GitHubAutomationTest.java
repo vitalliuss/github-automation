@@ -12,21 +12,22 @@ public class GitHubAutomationTest
 	private Steps steps;
 	private final String USERNAME = "testautomationuser";
 	private final String PASSWORD = "Time4Death!";
+	private final int REPOSITORY_NAME_POSTFIX_LENGTH = 6;
 
 	@BeforeMethod(description = "Init browser")
 	public void setUp()
 	{
 		steps = new Steps();
-		steps.initBrowser();
+		steps.openBrowser();
 	}
 
 	@Test
 	public void oneCanCreateProject()
 	{
 		steps.loginGithub(USERNAME, PASSWORD);
-		Assert.assertTrue(steps.createNewRepository("testRepo", "auto-generated test repo"));
-		Assert.assertTrue(steps.currentRepositoryIsEmpty());
-		// do not use lots of asserts
+		String repositoryName = steps.generateRandomRepositoryNameWithCharLength(REPOSITORY_NAME_POSTFIX_LENGTH);
+		steps.createNewRepository(repositoryName, "auto-generated test repo");
+		Assert.assertEquals(steps.getCurrentRepositoryName(), repositoryName);
 	}
 
 	@Test(description = "Login to Github")
@@ -39,7 +40,7 @@ public class GitHubAutomationTest
 	@AfterMethod(description = "Stop Browser")
 	public void stopBrowser()
 	{
-		steps.closeDriver();
+		steps.closeBrowser();
 	}
 
 }

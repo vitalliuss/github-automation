@@ -23,7 +23,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 	@FindBy(xpath = "//form[@id='new_repository']//button[@type='submit']")
 	private WebElement butttonCreate;
 
-	@FindBy(className = "empty-repo-setup-option")
+	@FindBy(xpath = "//h3/strong[text()='Quick setup']")
 	private WebElement labelEmptyRepoSetupOption;
 
 	@FindBy(xpath = "//a[@data-pjax='#js-repo-pjax-container']")
@@ -40,13 +40,11 @@ public class CreateNewRepositoryPage extends AbstractPage
 		return labelEmptyRepoSetupOption.isDisplayed();
 	}
 
-	public String createNewRepository(String repositoryName, String repositoryDescription)
+	public void createNewRepository(String repositoryName, String repositoryDescription)
 	{
-		String repositoryFullName = repositoryName + Utils.getRandomString(6);
-		inputRepositoryName.sendKeys(repositoryFullName);
+		inputRepositoryName.sendKeys(repositoryName);
 		inputRepositoryDescription.sendKeys(repositoryDescription);
 		butttonCreate.click();
-		return repositoryFullName;
 	}
 
 	public String getCurrentRepositoryName()
