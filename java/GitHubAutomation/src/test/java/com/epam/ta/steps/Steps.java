@@ -33,12 +33,10 @@ public class Steps
 		loginPage.login(username, password);
 	}
 
-	public boolean isLoggedIn(String username)
+	public String getLoggedInUserName()
 	{
 		LoginPage loginPage = new LoginPage(driver);
-		String actualUsername = loginPage.getLoggedInUserName().trim().toLowerCase();
-		logger.info("Actual username: " + actualUsername);
-		return actualUsername.equals(username);
+		return loginPage.getLoggedInUserName().trim().toLowerCase();
 	}
 
 	public void createNewRepository(String repositoryName, String repositoryDescription)

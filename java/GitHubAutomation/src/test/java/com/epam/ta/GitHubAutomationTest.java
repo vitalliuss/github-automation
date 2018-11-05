@@ -34,7 +34,7 @@ public class GitHubAutomationTest
 	public void oneCanLoginGithub()
 	{
 		steps.loginGithub(USERNAME, PASSWORD);
-		Assert.assertTrue(steps.isLoggedIn(USERNAME));
+		Assert.assertEquals(USERNAME, steps.getLoggedInUserName());
 	}
 
 	@AfterMethod(description = "Stop Browser")
