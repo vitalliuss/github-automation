@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
 @Listeners({TestListener.class})
-public class BaseTest {
+public class CommonConditions {
 
     protected WebDriver driver;
     protected static final int REPOSITORY_NAME_POSTFIX_LENGTH = 6;
@@ -21,7 +21,7 @@ public class BaseTest {
         driver = DriverSingleton.getDriver();
     }
 
-    @AfterMethod(description = "Stop Browser")
+    @AfterMethod(alwaysRun = true)
     public void stopBrowser()
     {
         DriverSingleton.closeDriver();

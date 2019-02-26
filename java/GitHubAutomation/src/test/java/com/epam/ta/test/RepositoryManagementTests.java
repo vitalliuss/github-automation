@@ -12,8 +12,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 
-public class RepositoryManagementTests extends BaseTest {
-    @Test
+public class RepositoryManagementTests extends CommonConditions {
+    @Test(description = "JIRA-7566")
     public void oneCanCreateProject()
     {
         User testUser = UserCreator.withCredentialsFromProperty();

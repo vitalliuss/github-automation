@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 
-public class UserAccessTests extends BaseTest {
+public class UserAccessTests extends CommonConditions {
 	@Test
 	public void oneCanLoginGithub()
 	{
