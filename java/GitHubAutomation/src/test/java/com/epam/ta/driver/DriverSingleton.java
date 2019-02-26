@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.ResourceBundle;
+
 public class DriverSingleton {
 
     private static final String RESOURCES_PATH = "src\\test\\resources\\";
@@ -15,7 +17,7 @@ public class DriverSingleton {
 
     public static WebDriver getDriver(){
         if (null == driver){
-            switch (TestDataReader.getTestData("testdata.driver.type")){
+            switch (System.getProperty("browser")){
                 case "firefox": {
                     System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
                     driver = new FirefoxDriver();
