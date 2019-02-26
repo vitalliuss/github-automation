@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke" verbose="1" >
+    <test name="UserAccess"   >
+        <packages>
+            <package name="com.epam.ta.test" />
+        </packages>
+    </test>
+</suite>
