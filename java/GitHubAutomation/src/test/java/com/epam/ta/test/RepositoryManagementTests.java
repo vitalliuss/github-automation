@@ -13,6 +13,9 @@ import static org.hamcrest.Matchers.is;
 
 
 public class RepositoryManagementTests extends CommonConditions {
+    protected static final int REPOSITORY_NAME_POSTFIX_LENGTH = 6;
+    protected static final String REPOSITORY_DESCRIPTION = "auto-generated test repo";
+
     @Test(description = "JIRA-7566")
     public void oneCanCreateProject()
     {

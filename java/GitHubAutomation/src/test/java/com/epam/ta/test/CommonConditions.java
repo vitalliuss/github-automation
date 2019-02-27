@@ -11,8 +11,6 @@ import org.testng.annotations.Listeners;
 public class CommonConditions {
 
     protected WebDriver driver;
-    protected static final int REPOSITORY_NAME_POSTFIX_LENGTH = 6;
-    protected static final String REPOSITORY_DESCRIPTION = "auto-generated test repo";
 
 
     @BeforeMethod()
