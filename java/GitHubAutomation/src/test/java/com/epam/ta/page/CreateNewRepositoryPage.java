@@ -1,7 +1,5 @@
 package com.epam.ta.page;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CreateNewRepositoryPage extends AbstractPage
 {
 	private final String BASE_URL = "http://www.github.com/new";
-	private final Logger logger = LogManager.getRootLogger();
 
 	@FindBy(id = "repository_name")
 	private WebElement inputRepositoryName;
@@ -47,8 +44,7 @@ public class CreateNewRepositoryPage extends AbstractPage
 		inputRepositoryName.sendKeys(repositoryName);
 		inputRepositoryDescription.sendKeys(repositoryDescription);
 		buttonCreate.click();
-		logger.info("Created repository with name: [" + repositoryName +
-				"[ and description: [" + repositoryDescription + "]");
+
 		return this;
 	}
 
