@@ -1,8 +1,6 @@
 package com.epam.ta.test;
 
-import com.epam.ta.model.User;
 import com.epam.ta.page.LoginPage;
-import com.epam.ta.service.UserCreator;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,11 +12,10 @@ public class UserAccessTests extends CommonConditions {
 	@Test
 	public void oneCanLoginGithub()
 	{
-		User testUser = UserCreator.withCredentialsFromProperty();
 		String loggedInUserName = new LoginPage(driver)
 				.openPage()
-				.login(testUser)
+				.login(USER_NAME, USER_PASSWORD)
 				.getLoggedInUserName();
-		assertThat(loggedInUserName, is(equalTo(testUser.getUsername())));
+		assertThat(loggedInUserName, is(equalTo(USER_NAME)));
 	}
 }

@@ -9,6 +9,8 @@ import org.testng.annotations.Listeners;
 public class CommonConditions {
 
     protected WebDriver driver;
+    protected static final String USER_NAME = "test-automation-user";
+    protected static final String USER_PASSWORD = "Time4Death!";
 
 
     @BeforeMethod()

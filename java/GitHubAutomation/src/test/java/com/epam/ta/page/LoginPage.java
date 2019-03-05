@@ -1,6 +1,5 @@
 package com.epam.ta.page;
 
-import com.epam.ta.model.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,10 +33,10 @@ public class LoginPage extends AbstractPage
 		return this;
 	}
 
-	public MainPage login(User user)
+	public MainPage login(String username, String password)
 	{
-		inputLogin.sendKeys(user.getUsername());
-		inputPassword.sendKeys(user.getPassword());
+		inputLogin.sendKeys(username);
+		inputPassword.sendKeys(password);
 		buttonSubmit.click();
 		return new MainPage(driver);
 	}

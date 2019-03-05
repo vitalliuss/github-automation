@@ -1,8 +1,6 @@
 package com.epam.ta.test;
 
-import com.epam.ta.model.User;
 import com.epam.ta.page.LoginPage;
-import com.epam.ta.service.UserCreator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,11 +20,10 @@ public class RepositoryManagementTests extends CommonConditions {
     @Test(description = "JIRA-7566")
     public void oneCanCreateProject()
     {
-        User testUser = UserCreator.withCredentialsFromProperty();
         String expectedRepositoryName = generateRandomRepositoryNameWithPostfixLength(REPOSITORY_NAME_POSTFIX_LENGTH);
         String createdRepositoryName = new LoginPage(driver)
                 .openPage()
-                .login(testUser)
+                .login(USER_NAME, USER_PASSWORD)
                 .invokeNewRepositoryCreation()
                 .createNewRepository(expectedRepositoryName, REPOSITORY_DESCRIPTION)
                 .getCurrentRepositoryName();
@@ -37,11 +34,10 @@ public class RepositoryManagementTests extends CommonConditions {
     @Test(description = "JIRA-7567")
     public void newProjectsAreEmpty()
     {
-        User testUser = UserCreator.withCredentialsFromProperty();
         String testRepositoryName = generateRandomRepositoryNameWithPostfixLength(REPOSITORY_NAME_POSTFIX_LENGTH);
         boolean isCurrentRepositoryEmpty = new LoginPage(driver)
                 .openPage()
-                .login(testUser)
+                .login(USER_NAME, USER_PASSWORD)
                 .invokeNewRepositoryCreation()
                 .createNewRepository(testRepositoryName, REPOSITORY_DESCRIPTION)
                 .isCurrentRepositoryEmpty();
