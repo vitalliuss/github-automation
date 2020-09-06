@@ -14,7 +14,7 @@ public class DriverSingleton {
 
     public static WebDriver getDriver(){
         if (null == driver){
-            switch (System.getProperty("browser")){
+            switch ("chrome"){
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
@@ -30,7 +30,7 @@ public class DriverSingleton {
     }
 
     public static void closeDriver(){
-        driver.quit();
-        driver = null;
+//        driver.quit();
+//        driver = null;
     }
 }

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Create Repository" verbose="1" >
+    <test name="one-can-create-repository"   >
+        <classes>
+            <class name="com.epam.ta.test.RepositoryManagementTests">
+                <methods>
+                    <include name="oneCanCreateProject" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
