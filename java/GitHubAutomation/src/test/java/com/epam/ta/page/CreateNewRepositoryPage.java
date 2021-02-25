@@ -24,6 +24,8 @@ public class CreateNewRepositoryPage extends AbstractPage
 	@FindBy(xpath = "//form[@id='new_repository']//button[@type='submit']")
 	private WebElement buttonCreate;
 
+	private final By buttonCreateEnableLocator = By.xpath("//form[@id='new_repository']//button[@type='submit'][not(@disabled)]");
+
 	private final By labelEmptyRepoSetupOptionLocator = By.xpath("//h3/strong[text()='Quick setup']");
 
 	@FindBy(xpath = "//a[@data-pjax='#js-repo-pjax-container']")
@@ -42,10 +44,18 @@ public class CreateNewRepositoryPage extends AbstractPage
 		return labelEmptyRepoSetupOption.isDisplayed();
 	}
 
+	public boolean waitButtonCreate() {
+		WebElement button = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+				.until(ExpectedConditions.presenceOfElementLocated(buttonCreateEnableLocator));
+		logger.info("Wait until the create button is visible");
+		return button.isDisplayed();
+	}
+
 	public CreateNewRepositoryPage createNewRepository(String repositoryName, String repositoryDescription)
 	{
 		inputRepositoryName.sendKeys(repositoryName);
 		inputRepositoryDescription.sendKeys(repositoryDescription);
+		waitButtonCreate();
 		buttonCreate.click();
 		logger.info("Created repository with name: [" + repositoryName +
 				"[ and description: [" + repositoryDescription + "]");
