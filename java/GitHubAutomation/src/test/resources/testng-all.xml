@@ -3,7 +3,7 @@
 <suite name="All tests" verbose="1" >
     <test name="All tests"   >
         <packages>
-            <package name="com.epam.ta.test" />
+            <package name="" />
         </packages>
     </test>
 </suite>
