@@ -1,5 +1,6 @@
-package com.epam.ta.page;
+package com.epam.ta.page.epamGithub;
 
+import com.epam.ta.page.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

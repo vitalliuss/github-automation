@@ -1,7 +1,7 @@
-package com.epam.ta.test;
+package com.epam.ta.test.epamTests;
 
 import com.epam.ta.model.User;
-import com.epam.ta.page.LoginPage;
+import com.epam.ta.page.epamGithub.LoginPage;
 import com.epam.ta.service.UserCreator;
 import org.testng.annotations.Test;
 
